@@ -1,0 +1,13 @@
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\bin\Debug\net8.0\User.Management.Service.deps.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\bin\Debug\net8.0\User.Management.Service.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\bin\Debug\net8.0\User.Management.Service.pdb
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.csproj.AssemblyReference.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.AssemblyInfoInputs.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.AssemblyInfo.cs
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.csproj.CoreCompileInputs.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\refint\User.Management.Service.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.pdb
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\ref\User.Management.Service.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.sourcelink.json
