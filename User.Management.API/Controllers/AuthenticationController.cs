@@ -17,6 +17,7 @@ namespace User.Management.API.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
         private readonly IConfiguration _configuration;
@@ -24,12 +25,14 @@ namespace User.Management.API.Controllers
         public AuthenticationController(UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IEmailService emailService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _emailService = emailService;
             _configuration = configuration;
+            _signInManager = signInManager;
         }
 
 
@@ -107,7 +110,17 @@ namespace User.Management.API.Controllers
         {
             //Check if the user exists
             var user = await _userManager.FindByNameAsync(loginUser.UserName!);
-            if (user != null && await _userManager.CheckPasswordAsync(user, loginUser.Password!))
+             
+            if (user!.TwoFactorEnabled)
+            {
+                await _signInManager.SignOutAsync();
+                await _signInManager.PasswordSignInAsync(user, loginUser.Password, false, false);
+                var token1=await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+                var message = new Message(new string[] { user.Email! }, "2FA Code", token1);
+                _emailService.SendEmail(message);
+                return Ok("Two Factor Authentication is enabled for this user. Please use 2FA code to login.");
+            }
+            if (await _userManager.CheckPasswordAsync(user, loginUser.Password!))
             {
                 //Create the claims
                 var authClaims = new List<Claim>
@@ -122,6 +135,7 @@ namespace User.Management.API.Controllers
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, role));
                 }
+
                 //Create the token
                 var token = GetToken(authClaims);
                 //return the token
@@ -148,7 +162,38 @@ namespace User.Management.API.Controllers
         }//end of GetToken
         
         #endregion
-        
+
+        [HttpPost]
+        [Route("Login-2FA")]
+        public async Task<IActionResult> LoginWithOTP(string code, string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            var signIn = await _signInManager.TwoFactorAuthenticatorSignInAsync(code, false, false);
+            if (!signIn.Succeeded || user == null) return Unauthorized("Invalid Code!");
+            //Create the claims
+            var authClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.UserName!),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            };
+            //Get the roles of the user
+            var userRoles = await _userManager.GetRolesAsync(user);
+            //Add the roles to the claims
+            foreach (var role in userRoles)
+            {
+                authClaims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            //Create the token
+            var token = GetToken(authClaims);
+            //return the token
+            return Ok(new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo
+            });
+        }//end of LoginWithOTP
+
         #region NotNeeded
         // [HttpGet]
         // public async Task<IActionResult> TestEmail()
