@@ -23,6 +23,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 //Add Configuration for Required Email 
 builder.Services.Configure<IdentityOptions>(
     opts => opts.SignIn.RequireConfirmedEmail = true);
+builder.Services.Configure<DataProtectionTokenProviderOptions>(opts =>
+    opts.TokenLifespan = TimeSpan.FromHours(3));
  
 //Add Authentication
 builder.Services.AddAuthentication(options =>
