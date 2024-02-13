@@ -35,6 +35,7 @@ namespace User.Management.API.Controllers
         }
 
         #region RegisterUser
+
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterUser registerUser)
@@ -78,55 +79,53 @@ namespace User.Management.API.Controllers
                     new Response { Status = "Error", Message = "Email Confirmation Failed!" });
             }
         } //end of ConfirmEmail
+
         #endregion
-        
+
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
-            var loginOtpResponse=await _user.GetOtpByLoginAsync(loginModel);
-            if (loginOtpResponse.Response!=null)
+            var loginOtpResponse = await _user.GetOtpByLoginAsync(loginModel);
+            if (loginOtpResponse.Response == null) return Unauthorized();
+            var user = loginOtpResponse.Response.User;
+            if (!await _userManager.CheckPasswordAsync(user, loginModel.Password!)) return Unauthorized();
+            if (user.TwoFactorEnabled)
             {
-                var user = loginOtpResponse.Response.User;
-                if (user.TwoFactorEnabled)
-                {
-                    var token = loginOtpResponse.Response.Token;
-                    var message = new Message(new string[] { user.Email! }, "OTP Confrimation", token);
-                    _emailService.SendEmail(message);
+                var token = loginOtpResponse.Response.Token;
+                var message = new Message(new string[] { user.Email! }, "OTP Confirmation", token);
+                _emailService.SendEmail(message);
 
-                    return StatusCode(StatusCodes.Status200OK,
-                        new Response
-                        {
-                            IsSuccess= loginOtpResponse.IsSuccess, 
-                            Status = "Success",
-                            Message = $"We have sent an OTP to your Email {user.Email}"
-                        });
-                }
-                if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
-                {
-                    var serviceResponse = await _user.GetJwtTokenAsync(user);
-                    return Ok(serviceResponse);
-
-                }
+                return StatusCode(StatusCodes.Status200OK,
+                    new Response
+                    {
+                        IsSuccess = loginOtpResponse.IsSuccess,
+                        Status = "Success",
+                        Message = $"We have sent an OTP to your Email {user.Email}"
+                    });
             }
-            return Unauthorized();
-        }//end of Login
+            var serviceResponse = await _user.GetJwtTokenAsync(user);
+            return Ok(serviceResponse);
+
+        } //end of Login
 
         [HttpPost]
         [Route("login-2FA")]
         public async Task<IActionResult> LoginWithOtp(string code, string userName)
         {
-            var jwt =await _user.LoginUserWithJWTokenAsync(code, userName);
+            var jwt = await _user.LoginUserWithJWTokenAsync(code, userName);
             if (jwt.IsSuccess)
             {
                 return Ok(jwt);
             }
+
             return StatusCode(StatusCodes.Status404NotFound,
                 new Response { Status = "Success", Message = $"Invalid Code" });
         }
-        
-        
+
+
         #region ForgotPassword
+
         [HttpPost]
         [AllowAnonymous]
         [Route("ForgotPassword")]
@@ -137,7 +136,7 @@ namespace User.Management.API.Controllers
             {
                 return BadRequest("Invalid Request");
             }
-        
+
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var callback = Url.Action("ResetPassword", "Authentication",
                 new { token, email = user.Email }, Request.Scheme);
@@ -145,9 +144,9 @@ namespace User.Management.API.Controllers
             _emailService.SendEmail(message);
             return Ok("Reset Password Email Sent!");
         } //end of ForgotPassword
-        
+
         #endregion
-        
+
         [HttpGet("ResetPassword")]
         public IActionResult ResetPassword(string token, string? email)
         {
@@ -157,10 +156,10 @@ namespace User.Management.API.Controllers
                 Email = email!
             };
             return Ok(model);
-        }//end of ResetPassword
-        
+        } //end of ResetPassword
+
         [HttpPost("ResetPassword")]
-        [AllowAnonymous ]
+        [AllowAnonymous]
         public async Task<IActionResult> ResetPassword(ResetPassword model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
@@ -168,7 +167,7 @@ namespace User.Management.API.Controllers
             {
                 return BadRequest("Invalid Request");
             }
-        
+
             var resetPassResult = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
             if (resetPassResult.Succeeded)
             {
@@ -178,8 +177,8 @@ namespace User.Management.API.Controllers
             {
                 return BadRequest("Invalid Request");
             }
-        }//end of ResetPassword
-        
+        } //end of ResetPassword
+
         [HttpPost]
         [Route("Refresh-Token")]
         public async Task<IActionResult> RefreshToken(LoginResponse tokens)
@@ -189,12 +188,13 @@ namespace User.Management.API.Controllers
             {
                 return Ok(jwt);
             }
+
             return StatusCode(StatusCodes.Status404NotFound,
                 new Response { Status = "Success", Message = $"Invalid Code" });
-        }//end of RefreshToken
-        
+        } //end of RefreshToken
+
         #region NotNeeded
-        
+
         // [HttpGet]
         // public async Task<IActionResult> TestEmail()
         // {
@@ -203,7 +203,7 @@ namespace User.Management.API.Controllers
         //     _emailService.SendEmail(message);
         //     return Ok("Email Sent Successfully!");
         // }
-        
+
         #endregion
     } //end of class
 } //end of namespace
