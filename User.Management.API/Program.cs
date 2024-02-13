@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using User.Management.API.Models;
+using User.Management.Data.Models;
 using User.Management.Service.Models;
 using User.Management.Service.Services;
 
@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("connectionString")));
 
 //Add Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
@@ -49,9 +49,10 @@ builder.Services.AddAuthentication(options =>
 //Add Email Configuration
 
 builder.Services.AddScoped<IEmailService, EmailService>();
-
 builder.Services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
 
+//Add User Management
+builder.Services.AddScoped<IUserManagement, UserManagement>();
 
 // Add services to the container.
 builder.Services.AddControllers();

@@ -11,3 +11,8 @@ D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\D
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.pdb
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\ref\User.Management.Service.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.sourcelink.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\bin\Debug\net8.0\User.Management.Service.runtimeconfig.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.genruntimeconfig.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\bin\Debug\net8.0\User.Management.Data.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\bin\Debug\net8.0\User.Management.Data.pdb
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Service\obj\Debug\net8.0\User.Management.Service.csproj.CopyComplete

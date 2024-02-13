@@ -1,0 +1,15 @@
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\bin\Debug\net8.0\User.Management.Data.deps.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\bin\Debug\net8.0\User.Management.Data.runtimeconfig.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\bin\Debug\net8.0\User.Management.Data.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\bin\Debug\net8.0\User.Management.Data.pdb
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.csproj.AssemblyReference.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.AssemblyInfoInputs.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.AssemblyInfo.cs
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.csproj.CoreCompileInputs.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.sourcelink.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\refint\User.Management.Data.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.pdb
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\User.Management.Data.genruntimeconfig.cache
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.Data\obj\Debug\net8.0\ref\User.Management.Data.dll

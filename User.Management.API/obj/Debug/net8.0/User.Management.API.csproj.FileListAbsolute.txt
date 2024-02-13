@@ -10,7 +10,6 @@ D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Humanizer.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -261,3 +260,9 @@ D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\User.Management.Service.pdb
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\obj\Debug\net8.0\User.Management.API.sourcelink.json
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\User.Management.Data.dll
+D:\OneDrive\Documents\Projects\User.Management.API\User.Management.API\bin\Debug\net8.0\User.Management.Data.pdb

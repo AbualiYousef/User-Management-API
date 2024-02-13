@@ -5,22 +5,22 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using User.Management.API.Models;
+using User.Management.Data.Models;
 
 #nullable disable
 
-namespace User.Management.API.Migrations
+namespace User.Management.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240207221730_RolesSeeded")]
-    partial class RolesSeeded
+    [Migration("20240213152850_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -54,21 +54,21 @@ namespace User.Management.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3d29fe3f-1a39-4624-8abf-7ff72d26fb1a",
+                            Id = "81db18fc-8e21-45d6-b1e1-b17fc3023cf0",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ddea00d6-1489-47b3-a196-ec3ebb3683fd",
+                            Id = "57dca8b6-b5a7-4f5c-ab80-164fb7ea53e0",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "8780a48d-ef16-4bfe-a65d-d2fbe036512f",
+                            Id = "f5bdd100-c7c9-4238-9316-dbbbb401f0ed",
                             ConcurrencyStamp = "3",
                             Name = "HR",
                             NormalizedName = "HR"
