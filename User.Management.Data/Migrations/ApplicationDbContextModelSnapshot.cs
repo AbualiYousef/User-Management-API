@@ -51,21 +51,21 @@ namespace User.Management.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ffa3a955-6e69-4383-ba9f-b75965e3dc54",
+                            Id = "fa36d5a6-1007-4baf-914e-777d42871f6e",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "9c2f7b9b-2766-475b-aabf-a53eef51d074",
+                            Id = "14d02bfe-8473-4411-a438-4cae07117980",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "316a96d1-c5f5-4d04-8c8a-6a4bd63d969d",
+                            Id = "0ed37a16-9d1b-4c4e-b06f-8ba37523521f",
                             ConcurrencyStamp = "3",
                             Name = "HR",
                             NormalizedName = "HR"
@@ -220,10 +220,10 @@ namespace User.Management.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("RefreshToken")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RefreshTokenExpiry")
+                    b.Property<DateTime?>("RefreshTokenExpiry")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
